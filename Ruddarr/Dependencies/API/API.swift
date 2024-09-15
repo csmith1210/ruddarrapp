@@ -41,6 +41,7 @@ struct API {
     var systemStatus: (Instance) async throws -> InstanceStatus
     var rootFolders: (Instance) async throws -> [InstanceRootFolders]
     var qualityProfiles: (Instance) async throws -> [InstanceQualityProfile]
+    var tags: (Instance) async throws -> [InstanceTag]
 
     var fetchQueueTasks: (Instance) async throws -> QueueItems
 
@@ -284,6 +285,11 @@ extension API {
         }, qualityProfiles: { instance in
             let url = URL(string: instance.url)!
                 .appending(path: "/api/v3/qualityprofile")
+
+            return try await request(url: url, headers: instance.auth)
+        }, tags: { instance in
+            let url = URL(string: instance.url)!
+                .appending(path: "/api/v3/tag")
 
             return try await request(url: url, headers: instance.auth)
         }, fetchQueueTasks: { instance in

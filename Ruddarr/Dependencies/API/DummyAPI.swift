@@ -143,6 +143,10 @@ extension API {
             try await Task.sleep(nanoseconds: 1_000_000_000)
 
             return loadPreviewData(filename: "quality-profiles")
+        }, tags: { _ in
+            try await Task.sleep(nanoseconds: 1_000_000_000)
+
+            return loadPreviewData(filename: "tags")
         }, fetchQueueTasks: { instance in
             try await Task.sleep(nanoseconds: 500_000_000)
 

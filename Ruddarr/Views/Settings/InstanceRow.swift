@@ -70,6 +70,7 @@ struct InstanceRow: View {
             instance.version = data.version
             instance.rootFolders = try await dependencies.api.rootFolders(instance)
             instance.qualityProfiles = try await dependencies.api.qualityProfiles(instance)
+            instance.tags = try await dependencies.api.tags(instance)
 
             settings.saveInstance(instance)
 

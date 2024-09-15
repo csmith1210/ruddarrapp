@@ -19,6 +19,7 @@ struct Instance: Identifiable, Equatable, Codable {
 
     var rootFolders: [InstanceRootFolders] = []
     var qualityProfiles: [InstanceQualityProfile] = []
+    var tags: [InstanceTag] = []
 
     var auth: [String: String] {
         var map: [String: String] = [:]
@@ -100,6 +101,11 @@ struct InstanceRootFolders: Identifiable, Equatable, Codable {
 struct InstanceQualityProfile: Identifiable, Equatable, Codable {
     let id: Int
     let name: String
+}
+
+struct InstanceTag: Identifiable, Equatable, Codable {
+    let id: Int
+    let label: String
 }
 
 struct DownloadReleaseCommand: Codable {
@@ -217,6 +223,10 @@ extension Instance {
             qualityProfiles: [
                 InstanceQualityProfile(id: 1, name: "Any"),
                 InstanceQualityProfile(id: 2, name: "4K"),
+            ],
+            tags: [
+                InstanceTag(id: 1, label: "tag1"),
+                InstanceTag(id: 2, label: "tag2"),
             ]
         )
     }
@@ -238,6 +248,10 @@ extension Instance {
                 InstanceQualityProfile(id: 3, name: "720p"),
                 InstanceQualityProfile(id: 4, name: "1080p"),
                 InstanceQualityProfile(id: 5, name: "4K"),
+            ],
+            tags: [
+                InstanceTag(id: 1, label: "tag1"),
+                InstanceTag(id: 2, label: "tag2"),
             ]
         )
     }
